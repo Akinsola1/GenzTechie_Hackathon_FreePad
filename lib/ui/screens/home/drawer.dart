@@ -34,7 +34,7 @@ class DrawerItem extends StatelessWidget {
                     fit: BoxFit.cover)),
           ),
           const SizedBox(
-            height: 10, 
+            height: 10,
           ),
           Center(
             child: Text(
@@ -52,16 +52,19 @@ class DrawerItem extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          InkWell(
-            onTap: () async {
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs.clear();
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                  RouteNames.login, (Route<dynamic> route) => false);
-            },
-            child: ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Sign Out'),
+          MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: InkWell(
+              onTap: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.clear();
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    RouteNames.login, (Route<dynamic> route) => false);
+              },
+              child: ListTile(
+                leading: Icon(Icons.logout),
+                title: Text('Sign Out'),
+              ),
             ),
           )
         ],
@@ -69,4 +72,3 @@ class DrawerItem extends StatelessWidget {
     );
   }
 }
-

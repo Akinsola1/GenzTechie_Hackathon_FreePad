@@ -74,24 +74,29 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child:  TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   controller: widget.controller,
+                    obscureText: hide,
                   decoration: InputDecoration(
                     isDense: false,
                     //fillColor: Colors.red,
-                    suffixIcon: widget.obscureText! ?  IconButton(
-                      onPressed: () {
-                        setState(() {
-                          hide = !hide;
-                        });
-                      },
-                      icon: !hide
-                          ?  Icon(
-                              Icons.visibility_outlined,
-                              color: Theme.of(context).iconTheme.color,
-                            )
-                          :  Icon(
-                              Icons.visibility_off_outlined,
-                              color: Theme.of(context).iconTheme.color,
-                            ),
+                    suffixIcon: widget.obscureText! ?  MouseRegion(
+                cursor: SystemMouseCursors.click,
+
+                      child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            hide = !hide;
+                          });
+                        },
+                        icon: !hide
+                            ?  Icon(
+                                Icons.visibility_outlined,
+                                color: Theme.of(context).iconTheme.color,
+                              )
+                            :  Icon(
+                                Icons.visibility_off_outlined,
+                                color: Theme.of(context).iconTheme.color,
+                              ),
+                      ),
                     ) : SizedBox(),
                     labelText: widget.labelText,
                     hintText: widget.hintText,

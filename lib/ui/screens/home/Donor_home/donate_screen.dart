@@ -80,18 +80,22 @@ class _DonateScreenState extends State<DonateScreen> {
                             fontSize: 13,
                           ),
                         ),
-                        trailing: Container(
-                          height: 30,
-                          width: 80,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).iconTheme.color,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Center(
-                            child: Text(
-                              'Donate',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                        trailing: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                          
+                          child: Container(
+                            height: 30,
+                            width: 80,
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).iconTheme.color,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Center(
+                              child: Text(
+                                'Donate',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),

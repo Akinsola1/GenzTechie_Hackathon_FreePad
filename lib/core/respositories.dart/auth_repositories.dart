@@ -72,7 +72,7 @@ class AuthProvider extends BaseNotifier {
 
       displayError(
           error: 'Account created successfully',
-          message: 'Login to get started');
+          message: 'Assist orders by donating');
       return true;
     } on NetworkException {
       displayError(

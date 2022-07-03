@@ -71,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       hintText: '********',
                       labelText: 'Password',
                       controller: passwordController,
-                      obscureText: hide,
+                      obscureText: true,
                     ),
                   ),
                   const SizedBox(

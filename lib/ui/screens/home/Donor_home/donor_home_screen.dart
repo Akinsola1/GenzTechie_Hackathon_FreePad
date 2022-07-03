@@ -115,18 +115,22 @@ class _DonorHomeState extends State<DonorHome> {
                                   style: Theme.of(context).textTheme.headline5),
                             ],
                           ),
-                          Container(
-                            height: 40,
-                            width: 100,
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).iconTheme.color,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Center(
-                              child: Text(
-                                'Fund wallet',
-                                style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontWeight: FontWeight.bold,
+                          MouseRegion(
+                cursor: SystemMouseCursors.click,
+
+                            child: Container(
+                              height: 40,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                  color: Theme.of(context).iconTheme.color,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Center(
+                                child: Text(
+                                  'Fund wallet',
+                                  style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
@@ -189,42 +193,46 @@ class _DonorHomeState extends State<DonorHome> {
                           MediaQuery.of(context).size.aspectRatio * 1.5,
                     ),
                     itemBuilder: (BuildContext context, int index) {
-                      return InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(context, RouteNames.donateScreen);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                  color: Theme.of(context).iconTheme.color!)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                height: 100,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                          dashboardOptionList
-                                              .elementAt(index)
-                                              .animation,
-                                        ),
-                                        fit: BoxFit.cover)),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                dashboardOptionList.elementAt(index).title,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
-                                    fontSize: 18),
-                              )
-                            ],
+                      return MouseRegion(
+                cursor: SystemMouseCursors.click,
+
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, RouteNames.donateScreen);
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                    color: Theme.of(context).iconTheme.color!)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 100,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                            dashboardOptionList
+                                                .elementAt(index)
+                                                .animation,
+                                          ),
+                                          fit: BoxFit.cover)),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  dashboardOptionList.elementAt(index).title,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                      fontSize: 18),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       );

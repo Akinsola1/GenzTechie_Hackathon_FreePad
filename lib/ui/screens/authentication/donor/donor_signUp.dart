@@ -270,7 +270,7 @@ class _LoginScreenState extends State<DonorSignUp> {
                   hintText: '********',
                   labelText: 'Password',
                   controller: passwordController,
-                  obscureText: hide,
+                  obscureText: true,
                 ),
               ),
               const SizedBox(
@@ -287,59 +287,67 @@ class _LoginScreenState extends State<DonorSignUp> {
                         child: CircularProgressIndicator(strokeWidth: 6)),
                   ],
                 ),
-                idleWidget: Row(
-                  children: [
-                    Expanded(
-                      child: CustomButton(
-                        onPressed: () async {
-                          bool u = await authProv.signUp(
-                              firstNameController.text,
-                              lastNameController.text,
-                              emailController.text,
-                              passwordController.text,
-                              'DONOR',
-                              phoneController.text,
-                              city,
-                              state,
-                              '');
-                          if (u) {
-                            Navigator.pushNamed(context, RouteNames.donorHome);
-                          }
-                        },
-                        textColor: Colors.white,
-                        text: 'Proceed',
-                        backgroundColor: Theme.of(context).primaryColor,
+                idleWidget: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: CustomButton(
+                          onPressed: () async {
+                            bool u = await authProv.signUp(
+                                firstNameController.text,
+                                lastNameController.text,
+                                emailController.text,
+                                passwordController.text,
+                                'DONOR',
+                                phoneController.text,
+                                city,
+                                state,
+                                '');
+                            if (u) {
+                              Navigator.pushNamed(
+                                  context, RouteNames.donorHome);
+                            }
+                          },
+                          textColor: Colors.white,
+                          text: 'Proceed',
+                          backgroundColor: Theme.of(context).primaryColor,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, RouteNames.login);
-                      },
-                      child: RichText(
-                        text: TextSpan(
-                          text: 'Already have account? ',
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
+              MouseRegion(
+                cursor: SystemMouseCursors.click,
+
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, RouteNames.login);
+                        },
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'Already have account? ',
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Login',
+                                  style: TextStyle(
+                                    color: Theme.of(context).iconTheme.color,
+                                  )),
+                            ],
                           ),
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: 'Login',
-                                style: TextStyle(
-                                  color: Theme.of(context).iconTheme.color,
-                                )),
-                          ],
-                        ),
-                      )),
-                ],
+                        )),
+                  ],
+                ),
               )
             ],
           ),

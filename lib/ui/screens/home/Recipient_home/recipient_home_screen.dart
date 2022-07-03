@@ -116,18 +116,22 @@ class _RecipientHomeState extends State<RecipientHome> {
                                   onTap: () {
                                     profile.makeDonationRequest();
                                   },
-                                  child: Container(
-                                    height: 40,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                        color: Theme.of(context).iconTheme.color,
-                                        borderRadius: BorderRadius.circular(10)),
-                                    child: Center(
-                                      child: Text(
-                                        'Request',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
+                                  child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+
+                                    child: Container(
+                                      height: 40,
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                          color: Theme.of(context).iconTheme.color,
+                                          borderRadius: BorderRadius.circular(10)),
+                                      child: Center(
+                                        child: Text(
+                                          'Request',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -142,25 +146,29 @@ class _RecipientHomeState extends State<RecipientHome> {
                 const SizedBox(
                   height: 10,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        text: 'Get your FreePad at ',
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
+                MouseRegion(
+                cursor: SystemMouseCursors.click,
+
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          text: 'Get your FreePad at ',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: data?.pharmacy,
+                                style: TextStyle(
+                                  color: Theme.of(context).iconTheme.color,
+                                )),
+                          ],
                         ),
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: data?.pharmacy,
-                              style: TextStyle(
-                                color: Theme.of(context).iconTheme.color,
-                              )),
-                        ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 )
               ],
             ),
