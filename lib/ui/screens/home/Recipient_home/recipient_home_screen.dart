@@ -57,7 +57,7 @@ class _RecipientHomeState extends State<RecipientHome> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('${data?.name}',
+                    Text('Hello ${data?.name}',
                         style: Theme.of(context).textTheme.bodyText1),
                     InkWell(
                       onTap: () => _key.currentState!.openDrawer(),

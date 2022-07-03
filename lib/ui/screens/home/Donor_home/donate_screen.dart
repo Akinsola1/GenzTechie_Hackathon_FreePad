@@ -29,7 +29,7 @@ class _DonateScreenState extends State<DonateScreen> {
     return Scaffold(
       
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
         child: ResponsiveState(
             state: profile.state,
             busyWidget: Center(
@@ -60,6 +60,7 @@ class _DonateScreenState extends State<DonateScreen> {
                     itemCount: profile.donationRequest.length,
                     itemBuilder: (context, index) {
                       return ListTile(
+                        contentPadding: EdgeInsets.zero,
                         leading: Container(
                           height: 30,
                           width: 30,

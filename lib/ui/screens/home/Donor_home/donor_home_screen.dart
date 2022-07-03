@@ -12,7 +12,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 List<dashboardOption> dashboardOptionList = [
   dashboardOption('assets/image/donate.jpg', 'Donate Pad'),
-  dashboardOption('assets/image/donate.jpg', 'Purchase Female Item'),
+  dashboardOption('assets/image/donate.jpg', 'View Previous Donation'),
 ];
 
 class DonorHome extends StatefulWidget {
@@ -68,8 +68,8 @@ class _DonorHomeState extends State<DonorHome> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('${data?.name}',
-                      style: Theme.of(context).textTheme.bodyText1),
+                  Text('Hello ${data?.name}',
+                      style: Theme.of(context).textTheme.headline6),
                   InkWell(
                     onTap: () => _key.currentState!.openDrawer(),
                     child: Container(
@@ -208,6 +208,7 @@ class _DonorHomeState extends State<DonorHome> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                
                                 Container(
                                   height: 100,
                                   width: 100,
