@@ -6,6 +6,7 @@ import 'package:free_pad/ui/responsive_screen/responsive.dart';
 import 'package:free_pad/ui/responsive_state/responsive_state.dart';
 import 'package:free_pad/ui/screens/home/Donor_home/simple_model.dart';
 import 'package:free_pad/ui/screens/home/drawer.dart';
+import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -42,10 +43,12 @@ class _DonorHomeState extends State<DonorHome> {
     );
     Size size = MediaQuery.of(context).size;
     var data = profile.profile.data;
+    var amount = (data?.peopleHelped ?? 0) * 500;
     List<breakDown> breakDownList = [
       breakDown('${data?.peopleHelped}', 'Happy Recipient'),
-      breakDown('0', 'Amount Donated'),
+      breakDown('${amount}', 'Amount Donated'),
     ];
+    var formatter = NumberFormat('#,###,###');
 
     return Scaffold(
       key: _key,
@@ -76,7 +79,10 @@ class _DonorHomeState extends State<DonorHome> {
                       height: 40,
                       width: 40,
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: Colors.white),
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          image: DecorationImage(
+                              image: AssetImage('assets/image/donate.jpg'))),
                     ),
                   )
                 ],
@@ -102,6 +108,7 @@ class _DonorHomeState extends State<DonorHome> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Wallet Balance',
                                   style: TextStyle(
@@ -111,13 +118,13 @@ class _DonorHomeState extends State<DonorHome> {
                               const SizedBox(
                                 height: 5,
                               ),
-                              Text('₦${data?.wallet}',
+                              Text(
+                                  '₦${formatter.format(double.tryParse('${data?.wallet}') ?? 0.00)}',
                                   style: Theme.of(context).textTheme.headline5),
                             ],
                           ),
                           MouseRegion(
-                cursor: SystemMouseCursors.click,
-
+                            cursor: SystemMouseCursors.click,
                             child: Container(
                               height: 40,
                               width: 100,
@@ -194,11 +201,11 @@ class _DonorHomeState extends State<DonorHome> {
                     ),
                     itemBuilder: (BuildContext context, int index) {
                       return MouseRegion(
-                cursor: SystemMouseCursors.click,
-
+                        cursor: SystemMouseCursors.click,
                         child: InkWell(
                           onTap: () {
-                            Navigator.pushNamed(context, RouteNames.donateScreen);
+                            Navigator.pushNamed(
+                                context, RouteNames.donateScreen);
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -208,7 +215,6 @@ class _DonorHomeState extends State<DonorHome> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                
                                 Container(
                                   height: 100,
                                   width: 100,

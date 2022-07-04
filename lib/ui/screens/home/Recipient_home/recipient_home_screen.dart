@@ -91,6 +91,7 @@ class _RecipientHomeState extends State<RecipientHome> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('Request Count',
                                     style: TextStyle(
@@ -100,7 +101,7 @@ class _RecipientHomeState extends State<RecipientHome> {
                                 const SizedBox(
                                   height: 5,
                                 ),
-                                Text('0',
+                                Text('${data?.requests}',
                                     style:
                                         Theme.of(context).textTheme.headline5),
                               ],

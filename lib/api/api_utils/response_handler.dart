@@ -4,12 +4,12 @@ import 'package:free_pad/api/data_models/api_response.dart';
 
 dynamic responseHandler(response, {bool hideLog = false}) async {
   //Attempt to derive error message
-  int exceptionMsg;
+  String exceptionMsg;
   String exceptionCode;
   ApiResponse _responsebody;
   try {
     _responsebody = ApiResponse.fromJson(response.body);
-    exceptionMsg = _responsebody.responseCode!;
+    exceptionMsg = _responsebody.responseCode!.toString();
   } catch (e) {
     print("Error deriving error message: $e");
     exceptionMsg = response.body;
@@ -39,7 +39,7 @@ dynamic responseHandler(response, {bool hideLog = false}) async {
     //extract errors
       try {
     _responsebody = ApiResponse.fromJson(response.body);
-        exceptionMsg = _responsebody.responseCode!;
+        exceptionMsg = _responsebody.responseCode!.toString();
       } catch (e) {
         print("could not extract errors");
       }

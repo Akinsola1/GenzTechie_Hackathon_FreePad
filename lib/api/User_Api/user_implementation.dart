@@ -2,6 +2,7 @@ import 'package:free_pad/api/User_Api/user_api.dart';
 import 'package:free_pad/api/data_models/auth_response/getUser_response.dart';
 import 'package:free_pad/api/data_models/auth_response/login_response.dart';
 import 'package:free_pad/api/data_models/request/createRequest_response.dart';
+import 'package:free_pad/api/data_models/request/make_donation_response.dart';
 import 'package:free_pad/api/data_models/request/request_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -75,6 +76,21 @@ class UserImplementation implements UserApi {
       }, '');
     var response = makeRequestResponseFromJson(responsebody);
     return response;
+  }
+
+  @override
+  Future<MakeDonation> makeDonation(int Id) async {
+   SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString("token")!;
+    var responsebody = await server.get(
+        'https://freepad.herokuapp.com/api/v1/donate/${Id}',
+      {
+        'Accept': 'application/json',
+        'Authorization': 'Token ${token}',
+      },
+    );
+    MakeDonation response = makeDonationFromJson(responsebody);
+    return response;  // TODO: implement makeDonation
   }
 }
 

@@ -88,6 +88,33 @@ class UserProvider extends BaseNotifier {
     return false;
   }
 
+
+
+  Future<bool> doDOnation(Id) async {
+    setState(ViewState.Busy);
+
+    try {
+      await userApi.makeDonation(Id);
+
+      setState(ViewState.Idle);
+      displayError(
+          error: 'Donation Made!',
+          message:
+              'Well done 👍');
+      return true;
+    } on NetworkException {
+      displayError(
+          error: 'No Internet!',
+          message: 'Please check your internet Connection');
+    } catch (e) {
+      print(e);
+      displayError(error: 'An Error occurred!', message: '${e}');
+    }
+    setState(ViewState.Idle);
+
+    return false;
+  }
+
   SnackbarController displayError(
       {required String error, required String message}) {
     SnackbarController controller = Get.snackbar(

@@ -43,6 +43,8 @@ class Data {
         this.city,
         this.state,
         this.pharmacy,
+        this.requests
+
     });
 
     String ?name;
@@ -54,6 +56,8 @@ class Data {
     String? city;
     String ?state;
     String ? pharmacy;
+    int ? requests;
+
 
     factory Data.fromJson(Map<String, dynamic> json) => Data(
         name: json["name"],
@@ -65,6 +69,8 @@ class Data {
         city: json["city"],
         state: json["state"],
         pharmacy: json["pharmacy"],
+        requests: json["requests"],
+
 
     );
 

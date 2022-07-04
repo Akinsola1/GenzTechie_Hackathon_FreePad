@@ -84,18 +84,27 @@ class _DonateScreenState extends State<DonateScreen> {
                         trailing: MouseRegion(
                 cursor: SystemMouseCursors.click,
                           
-                          child: Container(
-                            height: 30,
-                            width: 80,
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).iconTheme.color,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Center(
-                              child: Text(
-                                'Donate',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
+                          child: InkWell(
+                            onTap: ()async {
+                              bool u = await  profile.doDOnation(profile.donationRequest.elementAt(index).id);
+
+                              if (u) {
+                                profile.donationRequest.removeAt(index);
+                              }
+                            },  
+                            child: Container(
+                              height: 30,
+                              width: 80,
+                              decoration: BoxDecoration(
+                                  color: Theme.of(context).iconTheme.color,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Center(
+                                child: Text(
+                                  'Donate',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
