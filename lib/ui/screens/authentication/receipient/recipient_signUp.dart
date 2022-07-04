@@ -13,20 +13,7 @@ import 'package:free_pad/widget/custom_textfield.dart';
 
 import 'package:provider/provider.dart';
 
-List<String> stateList = [
-  'Lagos',
-  'Abuja',
-  'Kaduna',
-  'Osun',
-  'Ondo',
-];
-List<String> cityList = [
-  'City 2',
-  'City 3',
-  'City 4',
-  'City 5',
-  'City 7',
-];
+
 
 class RecipientSignUp extends StatefulWidget {
   const RecipientSignUp({Key? key}) : super(key: key);
@@ -45,8 +32,25 @@ class _LoginScreenState extends State<RecipientSignUp> {
   final TextEditingController pharmacyController = TextEditingController();
 
   bool hide = true;
-  String state = '';
+
+
+   String state = '';
   String city = '';
+  List<String> cities = [];
+
+  var locations = {
+    'Edo State': ["Benin City", "Egor", "Auchi", "Ekpoma"],
+    'Lagos Stste' : ["Lagos", "Ikeja", "Ikorodu", "Epe", "Badagry", "Lekki", "Yaba", "Surulere", "Mushin"],
+    'Ondo State' : ["Akure", "Owo", "Ifon", "Ore", "Ondo Town", "Ilara-Mokin"],
+    'Ogun State' : ["Abeokuta", "Ijebu-Ode", "Ota"],
+    'Osun State' : ["Osogbo", "Ife"],
+    'Ekiti State' : ["Ado-Ekiti", "Ikere-Ekiti"],
+    'Kogi State' : ["Lokoja"],
+    'Rivers State' : ["Port-Harcourt"],
+    'Anambra' : ["Awka", "Onitsha", "Oba"],
+    'Oyo State' : ["Ibadan"],
+    'FCT' : ["Abuja"]
+  };
   @override
   Widget build(BuildContext context) {
     final authProv = Provider.of<AuthProvider>(context);
@@ -146,8 +150,13 @@ class _LoginScreenState extends State<RecipientSignUp> {
                   ? Column(
                       children: [
                         CustomDropDown(
-                          options: stateList.toList(),
-                          onChanged: (val) => setState(() => state = val),
+                          options: locations.keys.toList(),
+                           onChanged: (option){
+                                    setState(() {
+                                      state = option;
+                                      cities = locations[state] ?? [];
+                                    });
+                                  },
                           width: double.infinity,
                           height: 56,
                           textStyle: TextStyle(
@@ -173,7 +182,7 @@ class _LoginScreenState extends State<RecipientSignUp> {
                           height: 20,
                         ),
                         CustomDropDown(
-                          options: cityList.toList(),
+                          options: cities.toList(),
                           onChanged: (val) => setState(() => city = val),
                           width: double.infinity,
                           height: 56,
@@ -204,8 +213,13 @@ class _LoginScreenState extends State<RecipientSignUp> {
                         SizedBox(
                           width: size.width / 5,
                           child: CustomDropDown(
-                            options: stateList.toList(),
-                            onChanged: (val) => setState(() => state = val),
+                            options: locations.keys.toList(),
+                             onChanged: (option){
+                                    setState(() {
+                                      state = option;
+                                      cities = locations[state] ?? [];
+                                    });
+                                  },
                             width: double.infinity,
                             height: 56,
                             textStyle: TextStyle(
@@ -232,7 +246,7 @@ class _LoginScreenState extends State<RecipientSignUp> {
                         SizedBox(
                           width: size.width / 5,
                           child: CustomDropDown(
-                            options: cityList.toList(),
+                            options: cities.toList(),
                             onChanged: (val) => setState(() => city = val),
                             width: double.infinity,
                             height: 56,
