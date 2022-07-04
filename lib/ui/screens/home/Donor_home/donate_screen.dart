@@ -46,7 +46,7 @@ class _DonateScreenState extends State<DonateScreen> {
                 ),
                 const SizedBox(height: 5,),
                 Text(
-                'Just a bunch of reason why people should help bla bala bal bakajfhd ajadja dadbuwad adbaliduadja aduahedaedad',
+                'Pad Donation made on FreePad will be sent to the closest pharmacy of the Recipient for pick up',
                    textAlign: TextAlign.left,     
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
