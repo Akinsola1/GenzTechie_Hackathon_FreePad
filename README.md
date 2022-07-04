@@ -1,6 +1,6 @@
 # free_pad
 
-GenZtechies 20222= Hackathon 🚀
+GenZtechies 2022 Hackathon 🚀
 
 # Development Setup
 Clone the repository and run the following commands:
