@@ -7,6 +7,7 @@ import 'package:free_pad/ui/screens/authentication/landing_screen.dart';
 import 'package:free_pad/ui/screens/authentication/receipient/recipient_signUp.dart';
 import 'package:free_pad/ui/screens/home/Donor_home/donate_screen.dart';
 import 'package:free_pad/ui/screens/home/Donor_home/donor_home_screen.dart';
+import 'package:free_pad/ui/screens/home/Donor_home/view_previous_donations.dart';
 import 'package:free_pad/ui/screens/home/Recipient_home/recipient_home_screen.dart';
 
 class RouteNames {
@@ -25,6 +26,8 @@ class RouteNames {
   static const String donorHome = 'donorHome';
   static const String Rhome = 'Rhome';
   static const String donateScreen = 'donateScreen';
+  static const String viewPreviousDOnation = 'viewPreviousDOnation';
+
 
 
   static Map<String, Widget Function(BuildContext)> routes = {
@@ -38,6 +41,9 @@ class RouteNames {
     donorHome: (context) => DonorHome(),
     Rhome: (context) => RecipientHome(),
     donateScreen: (context) => DonateScreen(),
+    viewPreviousDOnation: (context) => ViewPreviousDOnation(),
+
+
 
   };
 
@@ -64,6 +70,9 @@ class RouteNames {
         return MaterialPageRoute(builder: (context) => RecipientHome());
       case donateScreen:
         return MaterialPageRoute(builder: (context) => DonateScreen());
+       case viewPreviousDOnation:
+        return MaterialPageRoute(builder: (context) => ViewPreviousDOnation());
+
 
       default:
         return CupertinoPageRoute(

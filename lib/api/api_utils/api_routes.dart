@@ -13,6 +13,8 @@ class ApiRoutes {
   static const String createRequest = '$base/requests/create';
   //make donation 
   static const String makeDonation = '$base/requests/create';
+  // view donation
+  static const String viewDonations = '$base/pastdonations';
 
 
 

@@ -12,8 +12,8 @@ import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 List<dashboardOption> dashboardOptionList = [
-  dashboardOption('assets/image/donate.jpg', 'Donate Pad'),
-  dashboardOption('assets/image/donate.jpg', 'View Previous Donation'),
+  dashboardOption('assets/image/donate.jpg', 'Donate Pad', () {RouteNames.donateScreen;}),
+  dashboardOption('assets/image/donate.jpg', 'View Previous Donation', () {RouteNames.viewPreviousDOnation;}),
 ];
 
 class DonorHome extends StatefulWidget {
@@ -46,7 +46,7 @@ class _DonorHomeState extends State<DonorHome> {
     var amount = (data?.peopleHelped ?? 0) * 500;
     List<breakDown> breakDownList = [
       breakDown('${data?.peopleHelped}', 'Happy Recipient'),
-      breakDown('${amount}', 'Amount Donated'),
+      breakDown('₦${amount}', 'Amount Donated'),
     ];
     var formatter = NumberFormat('#,###,###');
 
@@ -204,8 +204,7 @@ class _DonorHomeState extends State<DonorHome> {
                         cursor: SystemMouseCursors.click,
                         child: InkWell(
                           onTap: () {
-                            Navigator.pushNamed(
-                                context, RouteNames.donateScreen);
+                             dashboardOptionList.elementAt(index).onPressed;
                           },
                           child: Container(
                             decoration: BoxDecoration(
