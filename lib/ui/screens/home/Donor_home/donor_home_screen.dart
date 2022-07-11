@@ -11,11 +11,6 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-List<dashboardOption> dashboardOptionList = [
-  dashboardOption('assets/image/donate.jpg', 'Donate Pad', () {RouteNames.donateScreen;}),
-  dashboardOption('assets/image/donate.jpg', 'View Previous Donation', () {RouteNames.viewPreviousDOnation;}),
-];
-
 class DonorHome extends StatefulWidget {
   DonorHome({Key? key}) : super(key: key);
 
@@ -38,6 +33,14 @@ class _DonorHomeState extends State<DonorHome> {
 
   @override
   Widget build(BuildContext context) {
+    List<dashboardOption> dashboardOptionList = [
+      dashboardOption('assets/image/donate.jpg', 'Donate Pad', () {
+        Navigator.pushNamed(context, RouteNames.donateScreen);
+      }),
+      dashboardOption('assets/image/donate.jpg', 'View Previous Donation', () {
+        Navigator.pushNamed(context, RouteNames.viewPreviousDOnation);
+      }),
+    ];
     var profile = Provider.of<UserProvider>(
       context,
     );
@@ -203,9 +206,7 @@ class _DonorHomeState extends State<DonorHome> {
                       return MouseRegion(
                         cursor: SystemMouseCursors.click,
                         child: InkWell(
-                          onTap: () {
-                             dashboardOptionList.elementAt(index).onPressed;
-                          },
+                          onTap: dashboardOptionList.elementAt(index).onPressed,
                           child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
